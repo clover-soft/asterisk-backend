@@ -13,15 +13,15 @@ class file:
         )
     def download(self):
         linkedid = request.args.get('linkedid')
-        cursor = self.conn.cursor()
-        cursor.execute(f'''SELECT 1''')
+        cursor = self.conn.cursor(dictionary=True)
+        cursor.execute(f'''SELECT file FROM mp3Files WHERE linkedid = "{linkedid}"''')
         result = cursor.fetchone()
         self.conn.close()
         # Проверяем, существует ли файл
         if not result:
             abort(404)
 
-        file_path = result[0]
+        file_path = result['file']
 
         # Проверяем, существует ли файл на диске
         if not os.path.isfile(file_path):

@@ -8,7 +8,7 @@ Settings.load_config()
 app = Flask(__name__)
 
 handler = RotatingFileHandler(
-    '/var/log/yaspeechkitwrapper.log', maxBytes=200*1024*1024, backupCount=10)
+    '/var/log/asterisk-backend.log', maxBytes=200*1024*1024, backupCount=10)
 formatter = logging.Formatter('[%(asctime)s][%(name)s] => %(message)s')
 handler.setFormatter(formatter)
 logging.basicConfig(handlers=[handler], level=logging.INFO)
