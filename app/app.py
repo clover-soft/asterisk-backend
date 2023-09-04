@@ -38,7 +38,7 @@ def log_response(response):
     return response
 
 from file_operations import file
-@app.route('/download')
+@app.route('/download', methods=['GET'])
 def file_download_request():
     IPAccessChecker.check_access()
     instance = file()
