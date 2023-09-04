@@ -32,7 +32,7 @@ def log_response(response):
     log_str = f"[{request.headers.get('X-Forwarded-For', request.remote_addr)}] "
     log_str += f"[{request.path}] => "
     log_str += f"[{response.status}] "
-    log_str += f"Response Body: {response.get_data(as_text=True)}"
+    # log_str += f"Response Body: {response.get_data(as_text=True)}"
     log_str += f"Request status: {response.status}"
     logger.info(log_str)
     return response
