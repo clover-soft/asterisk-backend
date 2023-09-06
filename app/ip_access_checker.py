@@ -9,7 +9,7 @@ class IPAccessChecker:
     def check_access():
         request_ip = request.headers.get(
             'X-Forwarded-For', request.remote_addr)
-        if request_ip == Settings.get_config_param('client_ip'):
+        if request_ip in Settings.get_config_param('client_ip_list'):
             return
         else:
             abort(403, "Access denied")
